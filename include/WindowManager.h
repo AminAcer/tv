@@ -1,6 +1,6 @@
 #pragma once
 
-#include "raylib.h"
+#include <raylib.h>
 #include <iostream>
 
 #define MONITOR 0
@@ -26,7 +26,7 @@ namespace tv
          ::SetWindowMonitor(MONITOR);
          ::SetWindowState(FLAG_VSYNC_HINT);
       }
-      
+
       /// @brief Delete default constructor
       WindowManager() = delete;
 

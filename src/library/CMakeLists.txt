@@ -5,12 +5,9 @@ set(INCLUDE_DIRS
 )
 
 set(SOURCE_FILES
-  #${CMAKE_SOURCE_DIR}/src/library/Player.cpp
-  ${CMAKE_SOURCE_DIR}/src/library/rng.cpp
+  ${CMAKE_SOURCE_DIR}/src/library/Button.cpp
 )
 
 add_library(${PROJECT_NAME}-lib ${SOURCE_FILES})
 
 target_include_directories(${PROJECT_NAME}-lib PUBLIC ${INCLUDE_DIRS})
-
-#target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})

@@ -20,11 +20,13 @@ namespace tv
       /// @param text: Button text
       /// @param bSize: Button size
       /// @param color: Button color
+      /// @param params: Function params for the button
       /// @param clickFn: Function to call when the button is clicked
       Button(Vector2 position, 
              std::string txt, 
              int bSize, 
              Color color, 
+             tv::FunctionParams params = {}, 
              const std::function<void(const tv::FunctionParams&)>& clickFn = defaultClickFunction);
 
       /// @brief Delete default constructor
@@ -62,6 +64,9 @@ namespace tv
 
       /// @brief Button text
       Text text{};
+
+      /// @brief Button text
+      tv::FunctionParams params{};
 
       /// @brief Function called on click
       std::function<void(const tv::FunctionParams&)> clickCallback{};

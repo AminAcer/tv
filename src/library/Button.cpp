@@ -4,8 +4,9 @@
 
 namespace tv
 {
-  Button::Button(Vector2 position, std::string txt, int bSize, Color color, const std::function<void(const tv::FunctionParams&)>& clickFn)
+  Button::Button(Vector2 position, std::string txt, int bSize, Color color, tv::FunctionParams params, const std::function<void(const tv::FunctionParams&)>& clickFn)
   : color(color),
+    params(std::move(params)),
     clickCallback(clickFn)
   {
     text = Text(txt, position, bSize);
@@ -56,8 +57,7 @@ namespace tv
       color = constants::GRAY_2;
       if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
       {
-        auto fparam = tv::FunctionParams(enums::SCENE::MAIN);
-        clickCallback(fparam);
+        clickCallback(params);
       }
     }
     else

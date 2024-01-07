@@ -19,6 +19,7 @@ namespace tv
   void WindowManager::UpdateScene(const tv::FunctionParams& params)
   {
     std::scoped_lock<std::mutex> lock{resourceLock};
+    std::cout << "Updating scene to: " << params.SceneToString() << std::endl;
     currentScene = params.scene;
   }
 } // namespace tv

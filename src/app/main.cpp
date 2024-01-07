@@ -15,7 +15,7 @@ int main()
 
    // Menu Scene ---------
    auto buttonManager = tv::ButtonManager();
-   auto b1 = tv::Button(Vector2(window.midRes), "Start", 35, constants::GRAY_4, [&window](const tv::FunctionParams& params) { window.UpdateScene(params); });
+   auto b1 = tv::Button(Vector2(window.midRes), "Start", 35, constants::GRAY_4, tv::FunctionParams(enums::SCENE::MAIN), [&window](const tv::FunctionParams& params) { window.UpdateScene(params); });
    auto b2 = tv::Button(Vector2(window.midRes.x,window.midRes.y + 75), "Quit", 35, constants::GRAY_4);
    buttonManager.AddButton(b1);
    buttonManager.AddButton(b2);
@@ -28,7 +28,8 @@ int main()
 
    // Main Scene ----------
    auto buttonManager2 = tv::ButtonManager();
-   auto b22 = tv::Button(Vector2(window.midRes.x - 233,window.midRes.y + 75), "Menu", 35, constants::GRAY_4);
+
+   auto b22 = tv::Button(Vector2(window.midRes.x - 233,window.midRes.y + 75), "Menu", 35, constants::GRAY_4, tv::FunctionParams(enums::SCENE::MENU), [&window](const tv::FunctionParams& params) { window.UpdateScene(params); });
    buttonManager2.AddButton(b22);
 
    auto textManager2 = tv::TextManager();

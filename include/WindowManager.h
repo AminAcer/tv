@@ -2,6 +2,10 @@
 
 #include <raylib.h>
 #include <iostream>
+#include <memory>
+#include <mutex>
+#include "Constants.h"
+#include "FunctionParams.h"
 
 #define MONITOR 0
 
@@ -11,21 +15,10 @@ namespace tv
    {
    public:
       /// @brief Constructor
-      /// @param windowWidth: Window width
-      /// @param windowHeight: Window height
+      /// @param res: Window resolution
       /// @param windowName: Window name
-      WindowManager(int windowWidth, int windowHeight, std::string windowName)
-      :  width(windowWidth),
-         height(windowHeight),
-         mid_x(windowWidth/2),
-         mid_y(windowHeight/2),
-         winName(windowName)
-      {
-         ::InitWindow(width, height, winName.c_str());
-         //::ToggleFullscreen();
-         ::SetWindowMonitor(MONITOR);
-         ::SetWindowState(FLAG_VSYNC_HINT);
-      }
+      /// @param initScene: First scene
+      WindowManager(Vector2 res, std::string windowName, enums::SCENE initScene);
 
       /// @brief Delete default constructor
       WindowManager() = delete;
@@ -36,20 +29,23 @@ namespace tv
       /// @brief Delete move constructor
       WindowManager(WindowManager&&) = delete;
 
-      /// @brief Window width
-      int width{};
+      /// @brief Update the scene
+      void UpdateScene(const tv::FunctionParams& params);
 
-      /// @brief Window height
-      int height{};
+      /// @brief Window resolution
+      Vector2 res{};
 
-      /// @brief Window width / 2
-      int mid_x{};
-
-      /// @brief Window height / 2
-      int mid_y{};
+      /// @brief Window resolution / 2
+      Vector2 midRes{};
 
       /// @brief Window name
       std::string winName{};
+
+      /// @brief Current active scene
+      enums::SCENE currentScene{};
+
+      /// @brief Current active scene
+      mutable std::mutex resourceLock{};
    };
 
 } // namespace tv

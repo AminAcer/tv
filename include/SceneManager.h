@@ -4,6 +4,7 @@
 #include <iostream>
 #include "ButtonManager.h"
 #include "TextManager.h"
+#include "RectangleManager.h"
 #include "CursorManager.h"
 
 #define MONITOR 0
@@ -14,8 +15,7 @@ namespace tv
    {
    public:
       /// @brief Constructor
-      /// @param InitScene: Managed scene
-      SceneManager(const enums::SCENE scene, tv::ButtonManager buttonManager, tv::TextManager textManager);
+      SceneManager(const enums::SCENE scene, ButtonManager buttonManager = {}, TextManager textManager = {}, RectangleManager rectangleManager = {});
 
       /// @brief Delete default constructor
       SceneManager() = delete;
@@ -33,13 +33,16 @@ namespace tv
       enums::SCENE scene{};
 
       /// @brief Button manager
-      tv::ButtonManager buttonManager{};
-      
+      ButtonManager buttonManager{};
+
       /// @brief Text manager
-      tv::TextManager textManager{};
-   
+      TextManager textManager{};
+
+      /// @brief Rectangle manager
+      RectangleManager rectangleManager{};
+
       /// @brief Cursor Manager
-      tv::CursorManager cursorManager{};
+      CursorManager cursorManager{};
    };
 
 } // namespace tv

@@ -21,8 +21,8 @@ namespace tv
       /// @brief Delete move constructor
       ButtonManager(ButtonManager&& other);
 
-      /// @brief Update the button
-      void Update();
+      /// @brief Draw the button
+      void Draw();
 
       /// @brief Adds a button
       void AddButton(tv::Button button);

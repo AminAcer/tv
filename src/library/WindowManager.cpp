@@ -22,4 +22,10 @@ namespace tv
     std::cout << "Updating scene to: " << params.SceneToString() << std::endl;
     currentScene = params.scene;
   }
+
+  void WindowManager::CloseWindow()
+  {
+    std::cout << "Closing TV\n";
+    isActive = false;
+  }
 } // namespace tv

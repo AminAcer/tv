@@ -5,6 +5,7 @@
 #include <memory>
 #include <mutex>
 #include "Constants.h"
+#include <atomic>
 #include "FunctionParams.h"
 
 #define MONITOR 0
@@ -32,6 +33,9 @@ namespace tv
       /// @brief Update the scene
       void UpdateScene(const tv::FunctionParams& params);
 
+      /// @brief Closes the main window
+      void CloseWindow();
+
       /// @brief Window resolution
       Vector2 res{};
 
@@ -46,6 +50,9 @@ namespace tv
 
       /// @brief Current active scene
       mutable std::mutex resourceLock{};
+
+      /// @brief Bool determining if the window is active or not
+      std::atomic<bool> isActive{true};
    };
 
 } // namespace tv

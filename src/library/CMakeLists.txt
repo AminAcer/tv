@@ -7,6 +7,7 @@ set(INCLUDE_DIRS
 
 set(SOURCE_FILES
   ${CMAKE_SOURCE_DIR}/src/library/Button.cpp
+  ${CMAKE_SOURCE_DIR}/src/library/Rectangle.cpp
   ${CMAKE_SOURCE_DIR}/src/library/ButtonManager.cpp
   ${CMAKE_SOURCE_DIR}/src/library/CMakeLists.txt
   ${CMAKE_SOURCE_DIR}/src/library/CursorManager.cpp
@@ -14,6 +15,8 @@ set(SOURCE_FILES
   ${CMAKE_SOURCE_DIR}/src/library/Text.cpp
   ${CMAKE_SOURCE_DIR}/src/library/TextManager.cpp
   ${CMAKE_SOURCE_DIR}/src/library/WindowManager.cpp
+  ${CMAKE_SOURCE_DIR}/src/library/Rectangle.cpp
+  ${CMAKE_SOURCE_DIR}/src/library/RectangleManager.cpp
 )
 
 add_library(${PROJECT_NAME}-lib ${SOURCE_FILES})

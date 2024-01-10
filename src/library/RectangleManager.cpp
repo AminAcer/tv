@@ -1,35 +1,35 @@
 
-#include "ButtonManager.h"
+#include "RectangleManager.h"
 #include "Constants.h"
 
 namespace tv
 {
-  ButtonManager::ButtonManager(const ButtonManager& other)
+  RectangleManager::RectangleManager(const RectangleManager& other)
   {
     std::unique_lock<std::mutex> rlck(other.rLock);
-    buttons = other.buttons;
+    rects = other.rects;
   }
   
-  ButtonManager::ButtonManager(ButtonManager&& other)
+  RectangleManager::RectangleManager(RectangleManager&& other)
   {
     std::unique_lock<std::mutex> llck(rLock, std::defer_lock);
     std::unique_lock<std::mutex> rlck(other.rLock, std::defer_lock);
     std::lock(llck, rlck);
-    buttons = std::move(other.buttons);
+    rects = std::move(other.rects);
   }
   
-  void ButtonManager::Draw()
+  void RectangleManager::Draw()
   {
     std::scoped_lock<std::mutex> lock{rLock};
-    for(auto& button : buttons)
+    for(auto& rect: rects)
     {
-      button.Draw();
+      rect.Draw();
     }
   }
 
-  void ButtonManager::AddButton(tv::Button button)
+  void RectangleManager::AddRectangle(tv::Rectangle rect)
   {
     std::scoped_lock<std::mutex> lock{rLock};
-    buttons.push_back(std::move(button));
+    rects.push_back(std::move(rect));
   }
 } // namespace tv

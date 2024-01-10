@@ -4,16 +4,18 @@
 
 namespace tv
 {
-  SceneManager::SceneManager(const enums::SCENE scene, tv::ButtonManager buttonManager, tv::TextManager textManager)
+  SceneManager::SceneManager(const enums::SCENE scene, ButtonManager buttonManager, TextManager textManager, RectangleManager rectangleManager)
     :  scene(scene),
        buttonManager(std::move(buttonManager)),
-       textManager(std::move(textManager))
+       textManager(std::move(textManager)),
+       rectangleManager(std::move(rectangleManager))
   {
   }
 
   void SceneManager::Update()
   {
     textManager.Draw();
-    buttonManager.Update();
+    buttonManager.Draw();
+    rectangleManager.Draw();
   }
 } // namespace tv

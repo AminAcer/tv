@@ -15,6 +15,25 @@ namespace tv
         position.y - constants::TEXT_BUTTON_SPACING/2 - text.textSize.y/2};
   }
 
+  Button::Button(Vector2 position, std::string txt, int bSize, Color color, const std::function<void(const tv::FunctionParams&)>& clickFn)
+  : color(color),
+    clickCallback(clickFn)
+  {
+    text = Text(txt, position, bSize);
+    this->size = Vector2{text.textSize.x + constants::TEXT_BUTTON_SPACING * 2, text.textSize.y + constants::TEXT_BUTTON_SPACING};
+    this->position = Vector2{position.x - constants::TEXT_BUTTON_SPACING - text.textSize.x/2, 
+        position.y - constants::TEXT_BUTTON_SPACING/2 - text.textSize.y/2};
+  }
+
+  Button::Button(Vector2 position, std::string txt, int bSize, Color color)
+  : color(color)
+  {
+    text = Text(txt, position, bSize);
+    this->size = Vector2{text.textSize.x + constants::TEXT_BUTTON_SPACING * 2, text.textSize.y + constants::TEXT_BUTTON_SPACING};
+    this->position = Vector2{position.x - constants::TEXT_BUTTON_SPACING - text.textSize.x/2, 
+        position.y - constants::TEXT_BUTTON_SPACING/2 - text.textSize.y/2};
+  }
+
   Button& Button::operator=(Button&& other)
   {
     if(this != &other)

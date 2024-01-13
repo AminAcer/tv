@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <memory>
+#include <Logger.h>
 #include "WindowManager.h"
 #include "Constants.h"
 #include "SceneManager.h"

@@ -1,3 +1,5 @@
+include(FetchContent)
+
 target_compile_features(${PROJECT_NAME}-launch PRIVATE cxx_std_20)
 find_package(raylib REQUIRED)
 
@@ -19,7 +21,15 @@ set(SOURCE_FILES
   ${CMAKE_SOURCE_DIR}/src/library/RectangleManager.cpp
 )
 
+# Logger
+FetchContent_Declare(
+  spdlog
+  GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
+  GIT_TAG "v1.13.0"
+)
+FetchContent_MakeAvailable(spdlog)
+
 add_library(${PROJECT_NAME}-lib ${SOURCE_FILES})
 
 target_include_directories(${PROJECT_NAME}-lib PUBLIC ${INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME}-lib PUBLIC raylib)
+target_link_libraries(${PROJECT_NAME}-lib PUBLIC raylib PUBLIC spdlog::spdlog)

@@ -6,11 +6,12 @@
 #include <functional>
 #include "FunctionParams.h"
 #include "Text.h"
+#include "Logger.h"
 
 namespace tv
 {
   // Defautl function if one is not provided for the button
-  const std::function<void(const tv::FunctionParams&)> defaultClickFunction = [](const tv::FunctionParams&){ std::cout << "Function Not Impl\n"; };
+  const std::function<void(const tv::FunctionParams&)> defaultClickFunction = [](const tv::FunctionParams&){ LOG_INFO("Function Not Impl"); };
 
   class Button
   {

@@ -1,5 +1,6 @@
 
 #include "CursorManager.h"
+#include "Logger.h"
 
 namespace tv
 {
@@ -8,7 +9,7 @@ namespace tv
     if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
     {
       auto pos = GetMousePosition();
-      std::cout << "Mouse clicked (" << pos.x << ", " << pos.y << ")\n";
+      LOG_INFO("Mouse clicked (%d, %d)", pos.x , pos.y);
 
       return pos;
     }

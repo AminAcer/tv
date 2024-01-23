@@ -1,6 +1,7 @@
 
 #include "WindowManager.h"
 #include "Constants.h"
+#include "Logger.h"
 
 namespace tv
 {
@@ -9,7 +10,6 @@ namespace tv
        winName(windowName)
   {
     InitWindow(res.x, res.y, winName.c_str());
-    //::ToggleFullscreen();
     SetWindowMonitor(MONITOR);
     SetWindowState(FLAG_VSYNC_HINT);
 
@@ -19,13 +19,13 @@ namespace tv
   void WindowManager::UpdateScene(const tv::FunctionParams& params)
   {
     std::scoped_lock<std::mutex> lock{resourceLock};
-    std::cout << "Updating scene to: " << params.SceneToString() << std::endl;
+    LOG_INFO("Updating scene to: {}", params.SceneToString());
     currentScene = params.scene;
   }
 
   void WindowManager::CloseWindow()
   {
-    std::cout << "Closing TV\n";
+    LOG_INFO("Closing TV");
     isActive = false;
   }
 } // namespace tv

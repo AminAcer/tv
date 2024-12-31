@@ -32,4 +32,7 @@ FetchContent_MakeAvailable(spdlog)
 add_library(${PROJECT_NAME}-lib ${SOURCE_FILES})
 
 target_include_directories(${PROJECT_NAME}-lib PUBLIC ${INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME}-lib PUBLIC raylib PUBLIC spdlog::spdlog)
+target_link_libraries(${PROJECT_NAME}-lib PUBLIC 
+  raylib
+  spdlog::spdlog
+)

@@ -6,13 +6,17 @@
 #include <Constants.h>
 #include <SceneManager.h>
 
+// Constants
+const int FPS = 60;
+
+
 int main()
 {
    // Window init
    tv::WindowManager window(Vector2{1280, 720}, "tv", enums::SCENE::MENU); 
 
    // FPS
-   SetTargetFPS(constants::FPS);
+   SetTargetFPS(FPS);
 
    // Menu Scene ---------
    auto buttonManager = tv::ButtonManager();

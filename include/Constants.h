@@ -4,9 +4,6 @@
 #include <raylib.h>
 
 namespace constants {
-// Performance
-const int FPS = 60;
-
 // Colors
 const Color MAIN_GRAY = Color{114, 115, 115, 255};
 const Color GRAY_1 = Color{214, 214, 214, 255};
